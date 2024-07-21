@@ -4,11 +4,178 @@
     box-sizing: border-box;
 }
 
-html, body {
+.wrapper {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
     height: 100%;
-    margin: 0;
+    width: 100%;
+    background: url('./assets/bg.jpg') no-repeat center center;
+    background-size: cover;
+    z-index: -1;
+}
+
+.background::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 0.5;
+    z-index: -1;
 }
 
 .container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    z-index: 1;
+}
+
+.title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #ecf0f1;
+}
+
+form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
     width: 100%;
+    max-width: 300px;
+    outline: none;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #3498db;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #ecf0f1;
+}
+
+h3 {
+    font-size: 1.25rem;
+    margin-top: 10px;
+    color: #f39c12;
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 1.5rem;
+    }
+
+    form {
+        flex-direction: row;
+    }
+
+    input {
+        font-size: 0.9rem;
+        max-width: 100%;
+    }
+
+    button {
+        font-size: 0.875rem;
+        padding: 8px 16px;
+    }
+
+    table {
+        font-size: 0.875rem;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+
+    h2 {
+        font-size: 1.25rem;
+    }
+
+    h3 {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.25rem;
+    }
+
+    input {
+        font-size: 0.75rem;
+    }
+
+    button {
+        font-size: 0.75rem;
+        padding: 6px 12px;
+    }
+
+    table {
+        font-size: 0.75rem;
+    }
+
+    th, td {
+        padding: 6px;
+    }
+
+    h2 {
+        font-size: 1rem;
+    }
+
+    h3 {
+        font-size: 0.875rem;
+    }
 }

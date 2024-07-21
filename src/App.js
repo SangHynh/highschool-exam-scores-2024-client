@@ -34,16 +34,27 @@ function App() {
   };
 
   // Calculate graduation score
-  const calculateGraduationScore = (toan, nguVan, ngoaiNgu, groupSubjects, groupType) => {
+  const calculateGraduationScore = (
+    toan,
+    nguVan,
+    ngoaiNgu,
+    groupSubjects,
+    groupType
+  ) => {
     // Total score for independent subjects
     const independentSubjectsTotal = toan + nguVan + ngoaiNgu;
 
     // Average score for group subjects based on group type
     let groupSubjectsAverage = 0;
-    if (groupType === 'xa_hoi') {
-      groupSubjectsAverage = (groupSubjects.lich_su + groupSubjects.dia_li + groupSubjects.gdcd) / 3;
-    } else if (groupType === 'tu_nhien') {
-      groupSubjectsAverage = (groupSubjects.vat_li + groupSubjects.hoa_hoc + groupSubjects.sinh_hoc) / 3;
+    if (groupType === "xa_hoi") {
+      groupSubjectsAverage =
+        (groupSubjects.lich_su + groupSubjects.dia_li + groupSubjects.gdcd) / 3;
+    } else if (groupType === "tu_nhien") {
+      groupSubjectsAverage =
+        (groupSubjects.vat_li +
+          groupSubjects.hoa_hoc +
+          groupSubjects.sinh_hoc) /
+        3;
     }
 
     // Calculate total graduation score
@@ -94,8 +105,8 @@ function App() {
         <table>
           <thead>
             <tr>
-              <th>Subject</th>
-              <th>Score</th>
+              <th>Môn học</th>
+              <th>Điểm </th>
             </tr>
           </thead>
           <tbody>
@@ -113,25 +124,27 @@ function App() {
   };
 
   return (
-    <div className="container">
-      <h1 className="title">Kết quả THPT Quốc gia 2024</h1>
+    <div className="wrapper">
+      <div className="background"></div>
+      <div className="container">
+        <h1 className="title">Kết quả THPT Quốc gia 2024</h1>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Nhập số báo danh"
+            value={sbd}
+            onChange={handleChange}
+          />
+          <button type="submit">Tìm kiếm</button>
+        </form>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Nhập số báo danh"
-          value={sbd}
-          onChange={handleChange}
-        />
-        <button type="submit">Tìm kiếm</button>
-      </form>
-
-      {data && (
-        <div>
-          <h2>Kết quả</h2>
-          {renderScores()}
-        </div>
-      )}
+        {data && (
+          <div>
+            <h2>Kết quả</h2>
+            {renderScores()}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
